@@ -10,7 +10,9 @@ function handleOperator(operator) {
 
   function calculate() {
     const display = document.getElementById('display');
-    const expression = display.value;
+    let expression = expression.replace(/[^0-9+\-*/.]/g, '');
+
+    expression = display.value;
 
     if (expression.includes('/')) {
       const operands = expression.split('/');
