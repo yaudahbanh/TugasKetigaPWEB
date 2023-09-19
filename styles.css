@@ -42,3 +42,11 @@ button {
     background-color: #4acf50;
     color: #fff;
 }
+
+h1 {
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    margin-bottom: -60px;
+    padding-top: 20px;
+}
