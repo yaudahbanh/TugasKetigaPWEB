@@ -1,49 +1,30 @@
-// Get the elements
-const display = document.getElementById('display');
-const buttons = document.getElementsByClassName('buttons')[0];
+function handleOperator(operator) {
+    const display = document.getElementById('display');
+    display.value += operator;
+  }
 
-// Add event listener to buttons container
-buttons.addEventListener('click', function(event) {
-  const button = event.target;
-  const buttonText = button.innerText;
-
-  if (buttonText === 'C') {
-    // Clear the display
+  function clearDisplay() {
+    const display = document.getElementById('display');
     display.value = '';
-  } else if (buttonText === '=') {
-    // Evaluate the expression
-    try {
-      const result = evaluateExpression(display.value);
-      display.value = result;
-    } catch (error) {
-      display.value = 'Error';
-    }
-  } else {
-    // Append the button's text to the display
-    display.value += buttonText;
-  }
-});
-
-// Custom function to evaluate expression
-function evaluateExpression(expression) {
-  // Split the expression using the divide operator '/'
-  const parts = expression.split('/');
-
-  // If there is only one part, return the expression as it is
-  if (parts.length === 1) {
-    return expression;
   }
 
-  // If there are multiple parts, perform division
-  let result = parseFloat(parts[0]);
-  for (let i = 1; i < parts.length; i++) {
-    const operand = parseFloat(parts[i]);
-    if (operand !== 0) {
-      result /= operand;
+  function calculate() {
+    const display = document.getElementById('display');
+    const expression = display.value;
+
+    if (expression.includes('/')) {
+      const operands = expression.split('/');
+      const numerator = parseFloat(operands[0]);
+      const denominator = parseFloat(operands[1]);
+
+      if (denominator !== 0) {
+        const result = numerator / denominator;
+        display.value = result;
+      } else {
+        display.value = 'Error: Division by zero';
+      }
     } else {
-      throw new Error('Division by zero');
+      const result = eval(expression);
+      display.value = result;
     }
   }
-
-  return result.toFixed(2); // Return the result with 2 decimal places
-}
