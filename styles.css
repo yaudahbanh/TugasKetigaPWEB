@@ -47,6 +47,12 @@ h1 {
     font-family: 'Inter', sans-serif;
     display: flex;
     justify-content: center;
-    margin-bottom: -60px;
     padding-top: 20px;
+}
+
+h2 {
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    margin-bottom: -30px;
 }
